@@ -9,4 +9,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string name="verification_code_subtext">Please type the verification code sent to +xxxxxxxxxx</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="validate">Validate</string>
 </resources>

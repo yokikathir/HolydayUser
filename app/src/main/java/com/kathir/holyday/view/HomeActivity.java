@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.kathir.holyday.R;
 
-public class RegisterationActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registeration);
+        setContentView(R.layout.activity_home);
     }
 }
