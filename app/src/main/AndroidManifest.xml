@@ -9,14 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.HomeActivity"></activity>
-        <activity android:name=".view.RegisterActivity" />
-        <activity android:name=".view.OTPActivity" />
-        <activity android:name=".mvvm.LoginActivity" />
         <activity
-            android:name=".view.SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_login">
+            android:name=".view.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.MpinSetupActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.HomeActivity" />
+        <activity
+            android:name=".mvvm.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.OTPActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.splash.SplashScreen"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

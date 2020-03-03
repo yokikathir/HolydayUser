@@ -30,8 +30,8 @@
     <attr format="reference|color" name="lineColor"/>
     <attr format="enum" name="viewType">
       <enum name="rectangle" value="0"/>
-      <enum name="line" value="1"/>
-      <enum name="none" value="2"/>
+      <enum name="line" value="0"/>
+      <enum name="none" value="1"/>
     </attr>
     <attr name="android:cursorVisible"/>
     <attr format="dimension" name="cursorWidth"/>

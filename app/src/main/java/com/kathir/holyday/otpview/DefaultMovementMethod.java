@@ -1,4 +1,4 @@
-package com.kathir.holyday.utils.otpview;
+package com.kathir.holyday.otpview;
 
 /*
  * Copyright 2018 Mukesh Solanki
@@ -15,6 +15,7 @@ package com.kathir.holyday.utils.otpview;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 
 import android.text.Selection;
 import android.text.Spannable;

@@ -7,14 +7,14 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-public class LoginViewModel extends ViewModel {
+public class RegisterViewModel extends ViewModel {
 
-    public MutableLiveData<String> loginStatus = new MutableLiveData<String>();;
+    public MutableLiveData<String> regStatus = new MutableLiveData<String>();;
 
 
-    public void doLogin(String userName, String password ) {
-        UserModel userModel = new UserModel(userName, password);
-        final int code = userModel.checkUserValidity(userName,password);
+    public void doLogin(String userName, String empno,String staff,String dob, String membership, String phone, String gmail,String gender) {
+        UserModel userModel = new UserModel(userName, empno,dob,staff,membership,phone,gmail,gender);
+        final int code = userModel.checkUserValidity(userName,empno);
         System.out.println("@Code "+code);
 
         new Handler().postDelayed(new Runnable() {
@@ -30,7 +30,7 @@ public class LoginViewModel extends ViewModel {
                 }
                 System.out.println("@LOGIN: "+msg);
 
-                loginStatus.postValue(msg);
+                regStatus.postValue(msg);
             }
         }, 2000);
     }

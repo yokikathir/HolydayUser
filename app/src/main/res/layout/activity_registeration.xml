@@ -10,7 +10,7 @@
     android:paddingLeft="18dp"
     android:paddingRight="18dp"
     android:paddingTop="16dp"
-    tools:context=".view.RegisterActivity">
+    tools:context=".mvvm.RegisterActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -69,6 +69,7 @@
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:hint="DOB"
+                android:cursorVisible="false"
                 android:textColorHint="#ffffff"
                 android:maxLines="1"
                 android:drawableLeft="@drawable/round_email_white_18dp" />
@@ -119,21 +120,16 @@
                 android:layout_height="1dp"
                 android:background="#f9d7db" />
 
-            <EditText
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:ems="10"
                 android:id="@+id/eRegMembership"
-                android:drawablePadding="12dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:textColorHint="#ffffff"
                 android:hint="Memebership"
-                android:maxLines="1"
-                android:background="@android:color/transparent"
+                android:background="@drawable/down_arraw"
                 android:layout_marginTop="4dp"
                 android:drawableLeft="@drawable/baseline_lock_white_18dp" />
             <View
@@ -208,6 +204,13 @@
                 android:textColor="#f16f7d"
                 android:padding="16dp"
                 android:clickable="true"/>
+            <ProgressBar
+                android:id="@+id/progress_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+                tools:layout_editor_absoluteX="16dp" />
 
         </LinearLayout>
     </ScrollView>
