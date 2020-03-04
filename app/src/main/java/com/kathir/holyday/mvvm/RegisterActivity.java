@@ -100,7 +100,12 @@ public class RegisterActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.INVISIBLE);
-                    startActivity(new Intent(RegisterActivity.this, OTPActivity.class));
+                  //  startActivity(new Intent(RegisterActivity.this, OTPActivity.class));
+                    String fPhone = regPhoneno.getText().toString().trim();
+
+                    Intent intent = new Intent(RegisterActivity.this, OTPActivity.class);
+                    intent.putExtra("mobile", fPhone);
+                    startActivity(intent);
 
                 }
 

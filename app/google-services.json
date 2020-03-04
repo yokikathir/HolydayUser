@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "608361577786",
+    "firebase_url": "https://holydayhome-e7351.firebaseio.com",
+    "project_id": "holydayhome-e7351",
+    "storage_bucket": "holydayhome-e7351.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608361577786:android:d6c9bd423cdf06546ae403",
+        "android_client_info": {
+          "package_name": "com.kathir.holyday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608361577786-2f71udatbb71oltnhgfjsnm1qc8phe9j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kathir.holyday",
+            "certificate_hash": "972cd3de7d86a705eaf9318c074e876946716069"
+          }
+        },
+        {
+          "client_id": "608361577786-qkm2i2ua4q27rv0rpn6tklrvbf8im1ll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARq9vfScCR0TYj548FVdd0kHTagUnUJeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608361577786-qkm2i2ua4q27rv0rpn6tklrvbf8im1ll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
