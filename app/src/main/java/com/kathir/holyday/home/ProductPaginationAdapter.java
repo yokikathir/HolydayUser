@@ -1,6 +1,7 @@
 package com.kathir.holyday.home;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +85,7 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
                 productView.prouctname.setText(result.getHouseName());
                 productView.discountAmount.setText(result.getPriceValue());
                       GlideUtil.getInstance().loadImage(context, productView.productImage, result.getImageUrl(), R.drawable.placeholder);
+
                 break;
 
             case LOADING:
