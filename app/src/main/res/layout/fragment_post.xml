@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:whilu="http://schemas.android.com/apk/res-auto"
+   >
+
+    <ScrollView
+        android:id="@+id/newd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/mainview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:id="@+id/postview"
+
+                android:layout_margin="20dp"
+                android:background="@drawable/bg_post"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+                <ImageView
+                    android:id="@+id/aximage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/uploadimage"
+                    android:layout_centerInParent="true"
+                    />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/bottom"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/bg_corner"
+                android:layout_marginTop="200dp"
+                android:layout_height="30dp">
+                <TextView
+                    android:id="@+id/discount"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@android:color/white"
+                    android:text="200"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/loc"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@android:color/white"
+                    android:text="PRXXX"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/pname"
+                android:layout_margin="20dp"
+                android:layout_below="@+id/bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="House name"
+                android:padding="10dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/bg_textinput"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+            <EditText
+                android:id="@+id/priceamt"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/pname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Price"
+                android:padding="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_textinput"
+                android:inputType="numberDecimal"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/textArea_information"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:hint="House Description"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_textinput"
+                android:gravity="center_vertical"
+                android:inputType="textMultiLine"
+                android:layout_below="@+id/priceamt"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:lines="6"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:scrollHorizontally="false" />
+
+            <TextView
+                android:id="@+id/sizetext"
+                android:visibility="visible"
+                android:text="Amenties"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+
+                android:layout_below="@+id/textArea_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.kathir.holyday.fragment.CheckableImageButton
+                android:id="@+id/small"
+                android:layout_below="@+id/sizetext"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@drawable/selector"
+                android:text="WIFI"
+                android:textColor="@drawable/checkable_text_color"
+                android:textSize="12sp" />
+
+            <com.kathir.holyday.fragment.CheckableImageButton
+                android:id="@+id/medium"
+                android:layout_below="@+id/sizetext"
+                android:layout_toRightOf="@+id/small"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@drawable/selector"
+                android:text="SWIMMING"
+                android:textColor="@drawable/checkable_text_color"
+                android:textSize="12sp" />
+
+            <com.kathir.holyday.fragment.CheckableImageButton
+                android:id="@+id/large"
+                android:layout_below="@+id/sizetext"
+                android:layout_toRightOf="@+id/medium"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@drawable/selector"
+                android:text="PARKING"
+                android:textColor="@drawable/checkable_text_color"
+                android:textSize="12sp" />
+
+            <com.kathir.holyday.fragment.CheckableImageButton
+                android:id="@+id/xl"
+                android:layout_below="@+id/sizetext"
+                android:layout_toRightOf="@+id/large"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@drawable/selector"
+                android:text="TV"
+                android:textColor="@drawable/checkable_text_color"
+                android:textSize="12sp" />
+
+
+            <Button
+                android:id="@+id/pot"
+                android:layout_below="@+id/xl"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/bg_btn"
+                android:text="Upload"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

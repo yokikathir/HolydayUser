@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".home.HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
             android:name=".view.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/main_navigation"
+            app:startDestination="@id/homeFragment"
+>
+    <fragment android:id="@+id/homeFragment" android:name="com.kathir.holyday.fragment.HomeFragment"
+              android:label="fragment_home" tools:layout="@layout/fragment_home">
+
+    </fragment>
+    <fragment android:id="@+id/postfragment" android:name="com.kathir.holyday.fragment.PostFragment"
+              android:label="fragment_all_category" tools:layout="@layout/fragment_post">
+
+    </fragment>
+
+    <fragment android:id="@+id/keygenerate" android:name="com.kathir.holyday.fragment.KeyGenerateFragment"
+        android:label="fragment_single_category" tools:layout="@layout/fragment_other">
+
+    </fragment>
+    <fragment android:id="@+id/settingfragment" android:name="com.kathir.holyday.fragment.SettingsFragment"
+              android:label="fragment_profile" tools:layout="@layout/fragment_settings">
+            </fragment>
+
+
+</navigation>

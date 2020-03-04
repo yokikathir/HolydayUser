@@ -13,6 +13,7 @@ import com.kathir.holyday.otpview.OtpView;
 
 import com.kathir.holyday.otpview.OnOtpCompletionListener;
 import com.kathir.holyday.utils.Keys;
+import com.kathir.holyday.utils.NavigationUtils;
 import com.kathir.holyday.utils.SharedPrefUtil;
 
 public class MpinSetupActivity extends AppCompatActivity implements View.OnClickListener,
@@ -26,6 +27,7 @@ public class MpinSetupActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_mpin_setup);
         initializeUi();
         setListeners();
+        SharedPrefUtil.init(this);
     }
 
     @Override
@@ -38,9 +40,10 @@ public class MpinSetupActivity extends AppCompatActivity implements View.OnClick
             String firstpin=mSetpin.getText().toString();
             String secondpin=mConfirmpin.getText().toString();
             if (firstpin.equals(secondpin)){
-                startActivity(new Intent(MpinSetupActivity.this, HomeActivity.class));
-               // finish();
                 SharedPrefUtil.getInstance().writeString(Keys.KEY_MPIN,secondpin);
+                NavigationUtils.navigateToHome(this);
+                //startActivity(new Intent(MpinSetupActivity.this, HomeActivity.class));
+               // finish();
 
             }else {
                 Toast.makeText(this, "Enterly wrong pin", Toast.LENGTH_SHORT).show();

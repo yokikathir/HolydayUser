@@ -30,7 +30,8 @@
             android:clickable="true"
             android:padding="16dp"
             android:text="Login"
-            android:textColor="#f16f7d"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/bgco"
             android:textSize="18sp"
             android:textStyle="normal" />
 
@@ -44,7 +45,8 @@
             android:clickable="true"
             android:padding="16dp"
             android:text="SignUp"
-            android:textColor="#f16f7d"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/bgco"
             android:textSize="18sp"
             android:textStyle="normal" />
 

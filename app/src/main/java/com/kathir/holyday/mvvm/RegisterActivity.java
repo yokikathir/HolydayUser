@@ -43,11 +43,12 @@ import java.util.Locale;
 public class RegisterActivity extends AppCompatActivity {
     RegisterViewModel regidterViewModel;
     List<String> categories = new ArrayList<String>();
+    List<String>stafflist=new ArrayList<>();
     private Button registerBtn, gotoLoginBtn;
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
-    private EditText regName, regGmail, regPhoneno, regSatff, regGender, regDob, regEmpid;
-    private Spinner regmebership;
+    private EditText regName, regGmail, regPhoneno, regGender, regDob, regEmpid;
+    private Spinner regmebership,regSatff;
     private ProgressBar progressBar;
     Calendar myCalendar = Calendar.getInstance();
     @Override
@@ -57,6 +58,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         initUI();
         calendar();
+        stafflist.add("Select Staff");
+        stafflist.add("Staff");
+        stafflist.add("Ex Staff");
+
+        ArrayAdapter<String>staffadapter=new ArrayAdapter<String>(RegisterActivity.this,R.layout.spinner_item,R.id.textview,stafflist);
+        regSatff.setAdapter(staffadapter);
+
+
         categories.add("Select Category");
         categories.add("Membership");
         categories.add("Non Membership");
@@ -114,7 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
         String fGmail = regGmail.getText().toString().trim();
         String fEmpno = regEmpid.getText().toString().trim();
         String fDob = regDob.getText().toString().trim();
-        String fstaff = regSatff.getText().toString().trim();
+        String fstaff = regSatff.getSelectedItem().toString().trim();
         String fGender = regGender.getText().toString().trim();
         String fMembership = regmebership.getSelectedItem().toString().trim();
 
@@ -152,9 +161,8 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (regGender.getText().toString().trim().length() == 0) {
             regGender.setError("Gender is not entered");
             regGender.requestFocus();
-        } else if (regSatff.getText().toString().trim().length() == 0) {
-            regSatff.setError("Staff/Ex Staff is not entered");
-            regSatff.requestFocus();
+        } else if (regSatff.getSelectedItemPosition() == 0) {
+            Toast.makeText(RegisterActivity.this, "Please Select Staff/Ex Staff", Toast.LENGTH_SHORT).show();
         } else if (regmebership.getSelectedItemPosition() == 0) {
             Toast.makeText(RegisterActivity.this, "Please Select the Membership", Toast.LENGTH_SHORT).show();
         } else if (regPhoneno.length() != 10) {
@@ -175,7 +183,7 @@ public class RegisterActivity extends AppCompatActivity {
             return true;
         } else if (regGender.getText().toString().trim().length() == 0) {
             return true;
-        } else if (regSatff.getText().toString().trim().length() == 0) {
+        } else if (regSatff.getSelectedItemPosition() == 0) {
             return true;
         } else if (regmebership.getSelectedItemPosition() == 0) {
             return true;

@@ -18,9 +18,13 @@ public class SharedPrefUtil {
     private SharedPrefUtil() {
 
     }
-
     public static void init(Context context) {
-        mThis.setData(context);
+        if (mThis == null) {
+            mThis = new SharedPrefUtil();
+            mThis.setData(context);
+        } else {
+            mThis.setData(context);
+        }
     }
 
     public static SharedPrefUtil getInstance() {
@@ -39,6 +43,7 @@ public class SharedPrefUtil {
     public void writeString(String tag, String data) {
         SharedPreferences.Editor editor = mPreference.edit();
         editor.putString(tag, data).apply();
+        editor.apply();
     }
     public String getTrackingDistinctId() {
 

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.kathir.holyday.R;
 import com.kathir.holyday.otpview.OtpView;
+import com.kathir.holyday.utils.NavigationUtils;
 import com.kathir.holyday.utils.SharedPrefUtil;
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initUI();
-
+        SharedPrefUtil.init(this);
         keyvalue = SharedPrefUtil.getInstance().getMpinId();
         progressBar.setVisibility(View.INVISIBLE);
         loignbtn.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +39,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void run() {
                         if (keyvalue!=null) {
                             if (mPin.getText().toString().equals(keyvalue)) {
-                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                //startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                NavigationUtils.navigateToHome(LoginActivity.this);
                                 progressBar.setVisibility(View.INVISIBLE);
                             } else {
                                 progressBar.setVisibility(View.INVISIBLE);
