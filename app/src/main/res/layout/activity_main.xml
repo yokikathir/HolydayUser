@@ -1,56 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/new_login_gradients"
-    android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingLeft="18dp"
-    android:paddingRight="18dp"
-    android:paddingTop="16dp"
+    android:background="@drawable/homebaground"
     tools:context=".view.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="100dp"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        >
 
-        <Button
-            android:id="@+id/btnLogin"
-            style="@style/Base.TextAppearance.AppCompat.Body1"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/background_login"
-            android:clickable="true"
-            android:padding="16dp"
-            android:text="Login"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="@color/bgco"
-            android:textSize="18sp"
-            android:textStyle="normal" />
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="100dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnsignup"
-            style="@style/Base.TextAppearance.AppCompat.Body1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/background_login"
-            android:clickable="true"
-            android:padding="16dp"
-            android:text="SignUp"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="@color/bgco"
-            android:textSize="18sp"
-            android:textStyle="normal" />
+            <Button
+                android:id="@+id/btnLogin"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_login"
+                android:backgroundTint="@color/bgco"
+                android:clickable="true"
+                android:padding="16dp"
+                android:text="Login"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="normal" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnsignup"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_login"
+                android:backgroundTint="@color/bgco"
+                android:clickable="true"
+                android:padding="16dp"
+                android:text="SignUp"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+    </RelativeLayout>
 
 
     <TextView
@@ -58,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="18sp"
-        android:text="welcome" />
+        android:text="" />
 
 
-</FrameLayout>
+</RelativeLayout>

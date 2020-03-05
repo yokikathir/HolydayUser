@@ -33,6 +33,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_alert">Welcome to Com.Vaidhiyanathan Memorial Guest House Booking</string>
     <string name="hint_location">Enter Your Location</string>
     <string name="search">SEARCH</string>
     <string name="view_btn">View</string>
