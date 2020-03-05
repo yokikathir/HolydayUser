@@ -64,3 +64,4 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_login_validate);
     }
 }
+

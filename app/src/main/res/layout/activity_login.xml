@@ -50,6 +50,7 @@
         style="@style/Base.TextAppearance.AppCompat.Body1"
         android:textSize="18sp"
         android:textColor="#f16f7d"
+        android:backgroundTint="@color/bgco"
         android:padding="16dp"
         android:clickable="true"/>
     <ProgressBar
