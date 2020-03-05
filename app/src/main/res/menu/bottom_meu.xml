@@ -4,10 +4,10 @@
           android:title="Home"
           android:icon="@drawable/ic_home" />
     <item android:id="@+id/post"
-          android:title="Post"
+          android:title="Booking"
           android:icon="@drawable/ic_home" />
     <item android:id="@+id/event"
-        android:title="Key Create"
+        android:title="Profile"
         android:icon="@drawable/ic_home" />
 
     <item android:id="@+id/more"

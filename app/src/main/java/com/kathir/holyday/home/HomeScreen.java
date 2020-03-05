@@ -48,8 +48,7 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
             navigationController.navigate(R.id.postfragment);
         else  if(menuItem.getItemId()==R.id.event)
             navigationController.navigate(R.id.keygenerate);
-        else  if(menuItem.getItemId()==R.id.more)
-            navigationController.navigate(R.id.settingfragment);
+
         return false;
     }
 }
