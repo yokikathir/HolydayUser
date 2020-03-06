@@ -10,8 +10,8 @@
         android:title="Profile"
         android:icon="@drawable/ic_home" />
 
-    <item android:id="@+id/more"
+  <!--  <item android:id="@+id/more"
           android:title="Settings"
-          android:icon="@drawable/ic_home" />
+          android:icon="@drawable/ic_home" />-->
 
 </menu>

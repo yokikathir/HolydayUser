@@ -37,7 +37,7 @@ TextView countBooking , booking;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the activity_property_view for this fragment
        view= inflater.inflate(R.layout.fragment_bookings, container, false);
        //ssseion manager
         progressDialog=new ProgressDialog(getContext());
@@ -46,7 +46,7 @@ TextView countBooking , booking;
         booking = (TextView)view.findViewById(R.id.booingView);
         //progressDialog.setTitle("U");
         progressDialog.setMessage("Please wait...");
-        progressDialog.show();
+      //  progressDialog.show();
 
         //bookingView
         booking.setOnClickListener(new View.OnClickListener() {

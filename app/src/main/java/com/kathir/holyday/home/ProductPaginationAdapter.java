@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import com.kathir.holyday.R;
 import com.kathir.holyday.utils.GlideUtil;
+import com.kathir.holyday.utils.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +28,18 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
 
     private static final int ITEM = 0;
     private static final int LOADING = 1;
-
+    private RecyclerViewClickListener mListener;
 
     private List<ProductList> productLists;
     private Context context;
-
+    private RelativeLayout mainLayout;
     private boolean isLoadingAdded = false;
 
 
-    public ProductPaginationAdapter(Context context) {
+    public ProductPaginationAdapter(Context context, RecyclerViewClickListener listener) {
         this.context = context;
         productLists = new ArrayList<>();
+        mListener = listener;
 
     }
 
@@ -92,7 +95,13 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
 //                Do nothing
                 break;
         }
-
+        mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // viewHolder.mainLayout.setClickable(false);
+                mListener.onItemClick(v, position);
+            }
+        });
     }
 
     @Override
@@ -185,7 +194,7 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
 
             rootView = itemView;
 
-
+            mainLayout = (RelativeLayout) itemView.findViewById(R.id.mainlayoutt);
             prouctname = (TextView) itemView.findViewById(R.id.productname);
 
             discountAmount = (TextView) itemView.findViewById(R.id.discountamount);

@@ -8,16 +8,16 @@
               android:label="fragment_home" tools:layout="@layout/fragment_home">
 
     </fragment>
-    <fragment android:id="@+id/postfragment" android:name="com.kathir.holyday.fragment.PostFragment"
+    <fragment android:id="@+id/postfragment" android:name="com.kathir.holyday.booking.Bookings"
               android:label="fragment_all_category" tools:layout="@layout/fragment_post">
 
     </fragment>
 
-    <fragment android:id="@+id/keygenerate" android:name="com.kathir.holyday.fragment.KeyGenerateFragment"
+    <fragment android:id="@+id/keygenerate" android:name="com.kathir.holyday.profile.Profilefragments"
         android:label="fragment_single_category" tools:layout="@layout/fragment_other">
 
     </fragment>
-    <fragment android:id="@+id/settingfragment" android:name="com.kathir.holyday.fragment.SettingsFragment"
+    <fragment android:id="@+id/settingfragment" android:name="com.kathir.holyday.fragment.ProfileFragment"
               android:label="fragment_profile" tools:layout="@layout/fragment_settings">
             </fragment>
 

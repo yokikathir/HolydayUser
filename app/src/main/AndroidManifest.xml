@@ -2,8 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kathir.holyday">
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
       <!-- // <activity android:name=".BookingAll" android:parentActivityName=".Dash"></activity>-->
+
+        <activity
+            android:name=".view.PropertyView"/>
+        <activity
+            android:name=".view.upload_documents"/>
         <activity
             android:name=".home.HomeScreen"
             android:theme="@style/AppTheme.NoActionBar"/>

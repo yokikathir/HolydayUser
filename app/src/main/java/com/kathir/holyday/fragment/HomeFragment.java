@@ -1,6 +1,7 @@
 package com.kathir.holyday.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,11 @@ import android.view.ViewGroup;
 
 
 import com.kathir.holyday.R;
+import com.kathir.holyday.booking.BookingAll;
 import com.kathir.holyday.home.ProductPaginationAdapter;
 import com.kathir.holyday.utils.AppUtils;
+import com.kathir.holyday.utils.RecyclerViewClickListener;
+import com.kathir.holyday.view.PropertyView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +23,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.internal.Utils;
 
 
-public class HomeFragment extends Fragment {
-
+public class HomeFragment extends Fragment implements RecyclerViewClickListener{
+    private RecyclerViewClickListener mListener;
     RecyclerView mProductRecycler;
     ProductPaginationAdapter mProductPagination;
     public HomeFragment() {
@@ -38,7 +42,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the activity_property_view for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -49,7 +53,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mProductRecycler.setLayoutManager(mLayoutManager);
         // notificationLayout.mNotiRecyclerView.addItemDecoration(new VerticalLineDecorator(2));
-        mProductPagination=new ProductPaginationAdapter(getActivity());
+        mProductPagination=new ProductPaginationAdapter(getActivity(),HomeFragment.this);
          mProductRecycler.setAdapter(mProductPagination);
         mProductPagination.addAll(AppUtils.getProductList());
     }
@@ -67,4 +71,9 @@ public class HomeFragment extends Fragment {
     }
 
 
+    @Override
+    public void onItemClick(View v, int position) {
+        Intent bookingIntent=new Intent(getContext()  , PropertyView.class);
+        getActivity().startActivity(bookingIntent);
+    }
 }

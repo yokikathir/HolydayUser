@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/new_login_gradients"
     android:orientation="vertical"
     android:paddingBottom="16dp"
     android:paddingLeft="18dp"
@@ -26,15 +25,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:background="@android:color/transparent"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:hint="Name"
-                android:textColorHint="#ffffff"
+                android:background="@drawable/bg_textinput"
+                android:textColorHint="@color/bgco"
                 android:maxLines="1"
-                android:drawableLeft="@drawable/round_account_circle_white_18dp" />
+                android:drawableLeft="@drawable/ic_launcher_person" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -44,15 +43,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
+                android:background="@drawable/bg_textinput"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:hint="Emp No"
-                android:textColorHint="#ffffff"
+                android:textColorHint="@color/bgco"
                 android:maxLines="1"
-                android:drawableLeft="@drawable/round_email_white_18dp" />
+                android:drawableLeft="@drawable/ic_launcher_card" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -63,16 +62,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:hint="DOB"
                 android:cursorVisible="false"
-                android:textColorHint="#ffffff"
+                android:background="@drawable/bg_textinput"
+                android:textColorHint="@color/bgco"
                 android:maxLines="1"
-                android:drawableLeft="@drawable/round_email_white_18dp" />
+                android:drawableLeft="@drawable/ic_launcher_dob" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -88,12 +87,12 @@
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:textColorHint="#ffffff"
+                android:background="@drawable/bg_textinput"
+                android:textColorHint="@color/bgco"
                 android:hint="Gender"
                 android:maxLines="1"
-                android:background="@android:color/transparent"
                 android:layout_marginTop="4dp"
-                android:drawableLeft="@drawable/baseline_lock_white_18dp" />
+                android:drawableLeft="@drawable/ic_launcher_gender" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -107,7 +106,7 @@
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:background="@drawable/down_arraw"
+                android:background="@drawable/bg_textinput"
                 android:hint="Staff/Ex Staff"
                 android:layout_marginTop="4dp"
                 android:drawableLeft="@drawable/baseline_lock_white_18dp" />
@@ -125,7 +124,8 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:hint="Memebership"
-                android:background="@drawable/down_arraw"
+                android:background="@drawable/bg_textinput"
+
                 android:layout_marginTop="4dp"
                 android:drawableLeft="@drawable/baseline_lock_white_18dp" />
             <View
@@ -139,15 +139,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:inputType="number"
                 android:padding="8dp"
                 android:hint="Phone number"
-                android:textColorHint="#ffffff"
+                android:background="@drawable/bg_textinput"
+                android:textColorHint="@color/bgco"
                 android:maxLines="1"
-                android:drawableLeft="@drawable/round_phone_white_18dp" />
+                android:drawableLeft="@drawable/ic_launcher_phone" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -158,15 +158,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@android:color/transparent"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
-                android:hint="Gmail"
-                android:textColorHint="#ffffff"
+                android:hint="Email"
+                android:background="@drawable/bg_textinput"
+                android:textColorHint="@color/bgco"
                 android:maxLines="1"
-                android:drawableLeft="@drawable/round_email_white_18dp" />
+                android:drawableLeft="@drawable/ic_launcher_email" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -201,6 +201,7 @@
                 android:textColor="#FFFFFF"
                 android:backgroundTint="@color/bgco"
                 android:padding="16dp"
+                android:visibility="invisible"
                 android:clickable="true"/>
             <ProgressBar
                 android:id="@+id/progress_login"

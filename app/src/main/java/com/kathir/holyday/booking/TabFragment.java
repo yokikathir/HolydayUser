@@ -25,7 +25,7 @@ public class TabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the activity_property_view for this fragment
         return inflater.inflate(R.layout.fragment_tab, container, false);
     }
 
