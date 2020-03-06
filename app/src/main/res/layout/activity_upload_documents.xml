@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".upload_documents"
+    tools:context=".view.upload_documents"
     android:orientation="vertical">
     <androidx.cardview.widget.CardView
         style="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -232,7 +232,31 @@
                             android:layout_height="wrap_content" />
 
                     </LinearLayout>
+                    <LinearLayout
+                        android:weightSum="3"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="0sp"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:hint="Adults"/>
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="0sp"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:hint="Children"/>
+                        <EditText
+                            android:layout_weight="1"
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:inputType="number"
+                            android:hint="Rooms"/>
 
+                </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
