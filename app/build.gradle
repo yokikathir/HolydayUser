@@ -1,18 +1,22 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
-
+apply plugin: 'com.amazonaws.appsync'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.kathir.holyday"
-        minSdkVersion 19
+        applicationId "com.iostream.holidayhome"
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -22,10 +26,27 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
     }
     repositories {
         mavenCentral()
         google()
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
     }
 }
 
@@ -38,10 +59,12 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    implementation 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-beta02'
 
@@ -58,11 +81,25 @@ dependencies {
     //card view
     implementation 'com.android.support:cardview-v7:29.0.0'
 
-    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+  /*  implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'*/
 
     //fancy aler dialog
     implementation 'com.github.Shashank02051997:FancyAlertDialog-Android:0.1'
 
     //callendar
     implementation 'com.github.psinetron:slycalendarview:0.0.9'
+    implementation 'com.amitshekhar.android:jackson-android-networking:1.0.2'
+
+    def aws_version = '2.6.27'
+
+    implementation 'com.squareup.picasso:picasso:2.3.2'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
+    implementation "com.amazonaws:aws-android-sdk-core:$aws_version"
+    implementation "com.amazonaws:aws-android-sdk-auth-core:$aws_version@aar"
+    implementation "com.amazonaws:aws-android-sdk-auth-ui:$aws_version@aar"
+    implementation "com.amazonaws:aws-android-sdk-auth-userpools:$aws_version@aar"
+    implementation "com.amazonaws:aws-android-sdk-cognitoidentityprovider:$aws_version"
+    implementation "com.amazonaws:aws-android-sdk-pinpoint:$aws_version"
+    implementation 'com.amazonaws:aws-android-sdk-ddb-mapper:2.7.+'
 }

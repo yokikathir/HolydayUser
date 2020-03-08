@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "608361577786",
-    "firebase_url": "https://holydayhome-e7351.firebaseio.com",
-    "project_id": "holydayhome-e7351",
-    "storage_bucket": "holydayhome-e7351.appspot.com"
+    "project_number": "93462534409",
+    "firebase_url": "https://holidayhome-45d56.firebaseio.com",
+    "project_id": "holidayhome-45d56",
+    "storage_bucket": "holidayhome-45d56.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:608361577786:android:d6c9bd423cdf06546ae403",
+        "mobilesdk_app_id": "1:93462534409:android:de0cbb67bba39ccb55dbd8",
         "android_client_info": {
-          "package_name": "com.kathir.holyday"
+          "package_name": "com.iostream.holidayhome"
         }
       },
       "oauth_client": [
         {
-          "client_id": "608361577786-2f71udatbb71oltnhgfjsnm1qc8phe9j.apps.googleusercontent.com",
+          "client_id": "93462534409-l8pn9kglvjsvfi53752re5rv240tse26.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.kathir.holyday",
-            "certificate_hash": "972cd3de7d86a705eaf9318c074e876946716069"
+            "package_name": "com.iostream.holidayhome",
+            "certificate_hash": "8dc0fff605a1afb37c301d033424bdceb6e6551d"
           }
         },
         {
-          "client_id": "608361577786-qkm2i2ua4q27rv0rpn6tklrvbf8im1ll.apps.googleusercontent.com",
+          "client_id": "93462534409-vjnuppcr5b4onvn6cu8atjiblsq4umgj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyARq9vfScCR0TYj548FVdd0kHTagUnUJeI"
+          "current_key": "AIzaSyC2BwIdDjq78enSeAiyC_yVsJPc4v56VsY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "608361577786-qkm2i2ua4q27rv0rpn6tklrvbf8im1ll.apps.googleusercontent.com",
+              "client_id": "93462534409-vjnuppcr5b4onvn6cu8atjiblsq4umgj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
