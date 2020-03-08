@@ -21,9 +21,14 @@ public class MpinSetupActivity extends AppCompatActivity implements View.OnClick
     private OtpView mSetpin, mConfirmpin;
     private Button mvalidatebtn;
 
+    SharedPrefUtil prefUtil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        prefUtil.init(this);
+
         setContentView(R.layout.activity_mpin_setup);
         initializeUi();
         setListeners();
@@ -41,7 +46,9 @@ public class MpinSetupActivity extends AppCompatActivity implements View.OnClick
             String secondpin=mConfirmpin.getText().toString();
             if (firstpin.equals(secondpin)){
                 SharedPrefUtil.getInstance().writeString(Keys.KEY_MPIN,secondpin);
-                NavigationUtils.navigateToHome(this);
+                prefUtil.getInstance().setLogin(true);
+                prefUtil.getInstance().setMPIN(secondpin);
+                NavigationUtils.navigateToLogin(this);
                 //startActivity(new Intent(MpinSetupActivity.this, HomeActivity.class));
                // finish();
 

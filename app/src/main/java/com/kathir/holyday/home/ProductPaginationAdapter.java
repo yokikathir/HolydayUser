@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.kathir.core.repository.ProductMTB;
 import com.kathir.holyday.R;
 import com.kathir.holyday.utils.GlideUtil;
 import com.kathir.holyday.utils.RecyclerViewClickListener;
@@ -30,7 +31,7 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
     private static final int LOADING = 1;
     private RecyclerViewClickListener mListener;
 
-    private List<ProductList> productLists;
+    private List<ProductMTB> productLists;
     private Context context;
     private RelativeLayout mainLayout;
     private boolean isLoadingAdded = false;
@@ -43,11 +44,11 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
 
     }
 
-    public List<ProductList> getProductLists() {
+    public List<ProductMTB> getProductLists() {
         return productLists;
     }
 
-    public void setProductList(List<ProductList> movieResults) {
+    public void setProductList(List<ProductMTB> movieResults) {
         this.productLists = movieResults;
     }
 
@@ -79,15 +80,15 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        ProductList result = productLists.get(position); // Movie
+        ProductMTB result = productLists.get(position); // Movie
 
         switch (getItemViewType(position)) {
             case ITEM:
                 final ProductView productView = (ProductView) holder;
 
-                productView.prouctname.setText(result.getHouseName());
-                productView.discountAmount.setText(result.getPriceValue());
-                      GlideUtil.getInstance().loadImage(context, productView.productImage, result.getImageUrl(), R.drawable.placeholder);
+                productView.prouctname.setText(result.getTittle());
+                productView.discountAmount.setText("₹ "+result.getStaffMemberAmt());
+                      GlideUtil.getInstance().loadImage(context, productView.productImage, result.getImage1(), R.drawable.placeholder);
 
                 break;
 
@@ -120,18 +121,18 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
    _________________________________________________________________________________________________
     */
 
-    public void add(ProductList r) {
+    public void add(ProductMTB r) {
         productLists.add(r);
         notifyItemInserted(productLists.size() - 1);
     }
 
-    public void addAll(List<ProductList> moveResults) {
-        for (ProductList result : moveResults) {
+    public void addAll(List<ProductMTB> moveResults) {
+        for (ProductMTB result : moveResults) {
             add(result);
         }
     }
 
-    public void remove(ProductList r) {
+    public void remove(ProductMTB r) {
         int position = productLists.indexOf(r);
         if (position > -1) {
             productLists.remove(position);
@@ -153,14 +154,14 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
 
     public void addLoadingFooter() {
         isLoadingAdded = true;
-        add(new ProductList());
+        add(new ProductMTB());
     }
 
     public void removeLoadingFooter() {
         isLoadingAdded = false;
 
         int position = productLists.size() - 1;
-        ProductList result = getItem(position);
+        ProductMTB result = getItem(position);
 
         if (result != null) {
             productLists.remove(position);
@@ -168,7 +169,7 @@ public class ProductPaginationAdapter extends RecyclerView.Adapter<RecyclerView.
         }
     }
 
-    public ProductList getItem(int position) {
+    public ProductMTB getItem(int position) {
         return productLists.get(position);
     }
 

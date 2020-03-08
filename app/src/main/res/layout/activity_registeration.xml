@@ -1,219 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingLeft="18dp"
-    android:paddingRight="18dp"
-    android:paddingTop="16dp"
-    tools:context=".mvvm.RegisterActivity">
+    xmlns:whilu="http://schemas.android.com/apk/res-auto"
+    >
     <ScrollView
+        android:id="@+id/newd"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/maindataview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/height"
+                android:background="@color/bgcolor"
+                android:layout_width="match_parent"
+                android:layout_height="57dp">
+                <TextView
+                    android:id="@+id/headertext"
+                    android:textColor="@color/white"
+                    android:layout_centerVertical="true"
+                    android:text="User Registeration"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/content"
+                android:layout_below="@+id/height"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/etRegName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Display Name"
+                    android:textColor="@color/darkgrey"
+                    android:textColorHint="@color/darkgrey"
+                    android:fontFamily="@font/helveticareqular"
+                    android:padding="10dp"
+                    android:background="@drawable/bg_textinput"
+                    android:inputType="text"
+                    android:singleLine="true" />
+                <EditText
+                    android:id="@+id/eRegEmpNo"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/darkgrey"
+                    android:textColorHint="@color/darkgrey"
+                    android:fontFamily="@font/helveticareqular"
+                    android:layout_below="@+id/etRegName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Employee ID"
+                    android:padding="10dp"
+                    android:background="@drawable/bg_textinput"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
+                <EditText
+                    android:id="@+id/eRegDob"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/eRegEmpNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkgrey"
+                    android:textColorHint="@color/darkgrey"
+                    android:fontFamily="@font/helveticareqular"
+                    android:hint="DOB"
+                    android:padding="10dp"
+                    android:background="@drawable/bg_textinput"
+                    android:inputType="text"
+                    android:singleLine="true" />
+                <EditText
+                    android:id="@+id/etRegPhone"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/darkgrey"
+                    android:textColorHint="@color/darkgrey"
+                    android:fontFamily="@font/helveticareqular"
+                    android:layout_below="@+id/eRegDob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone number"
+                    android:padding="10dp"
+                    android:background="@drawable/bg_textinput"
+                    android:inputType="phone"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/etRegGmail"
+                    android:textColor="@color/darkgrey"
+                    android:textColorHint="@color/darkgrey"
+                    android:fontFamily="@font/helveticareqular"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/etRegPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email ID"
+                    android:padding="10dp"
+
+                    android:background="@drawable/bg_textinput"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/gender"
 
 
-            <EditText
-                android:id="@+id/etRegName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:padding="8dp"
-                android:hint="Name"
-                android:background="@drawable/bg_textinput"
-                android:textColorHint="@color/bgco"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_launcher_person" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db" />
-            <EditText
-                android:id="@+id/eRegEmpNo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_textinput"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:padding="8dp"
-                android:hint="Emp No"
-                android:textColorHint="@color/bgco"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_launcher_card" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db" />
-
-            <EditText
-                android:id="@+id/eRegDob"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:padding="8dp"
-                android:hint="DOB"
-                android:cursorVisible="false"
-                android:background="@drawable/bg_textinput"
-                android:textColorHint="@color/bgco"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_launcher_dob" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:ems="10"
-                android:id="@+id/ereggender"
-                android:drawablePadding="12dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:background="@drawable/bg_textinput"
-                android:textColorHint="@color/bgco"
-                android:hint="Gender"
-                android:maxLines="1"
-                android:layout_marginTop="4dp"
-                android:drawableLeft="@drawable/ic_launcher_gender" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db" />
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/eRegstaff"
-                android:drawablePadding="12dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:background="@drawable/bg_textinput"
-                android:hint="Staff/Ex Staff"
-                android:layout_marginTop="4dp"
-                android:drawableLeft="@drawable/baseline_lock_white_18dp" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/eRegMembership"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:hint="Memebership"
-                android:background="@drawable/bg_textinput"
-
-                android:layout_marginTop="4dp"
-                android:drawableLeft="@drawable/baseline_lock_white_18dp" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db" />
+                    android:layout_below="@+id/etRegGmail"
 
 
-            <EditText
-                android:id="@+id/etRegPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:inputType="number"
-                android:padding="8dp"
-                android:hint="Phone number"
-                android:background="@drawable/bg_textinput"
-                android:textColorHint="@color/bgco"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_launcher_phone" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db" />
+                    android:background="@drawable/bg_textinput"
+                    android:hint="Gender"
+                    android:layout_marginTop="20dp"
+                    android:drawableLeft="@drawable/baseline_lock_white_18dp" />
+             >
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/eRegstaff"
 
-            <EditText
-                android:id="@+id/etRegGmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:padding="8dp"
-                android:hint="Email"
-                android:background="@drawable/bg_textinput"
-                android:textColorHint="@color/bgco"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_launcher_email" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f9d7db" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnRegLogin"
-                android:background="@drawable/background_login"
-                android:text="Register"
-                android:textAllCaps="false"
-                android:textStyle="normal"
-                android:layout_marginTop="30dp"
-                style="@style/Base.TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="@color/bgco"
-                android:padding="16dp"
-                android:clickable="true"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnGotoLogin"
-                android:background="@drawable/background_login"
-                android:text="Login"
-                android:textAllCaps="false"
-                android:textStyle="normal"
-                android:layout_marginTop="30dp"
-                style="@style/Base.TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="@color/bgco"
-                android:padding="16dp"
-                android:visibility="invisible"
-                android:clickable="true"/>
-            <ProgressBar
-                android:id="@+id/progress_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-                tools:layout_editor_absoluteX="16dp" />
+                    android:layout_below="@+id/gender"
 
-        </LinearLayout>
+
+                    android:background="@drawable/bg_textinput"
+                    android:hint="Staff"
+                    android:layout_marginTop="20dp"
+                    android:drawableLeft="@drawable/baseline_lock_white_18dp" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/ebranch"
+
+
+                    android:layout_below="@+id/eRegstaff"
+
+
+                    android:background="@drawable/bg_textinput"
+                    android:hint="Branch"
+                    android:layout_marginTop="20dp"
+                    android:drawableLeft="@drawable/baseline_lock_white_18dp"
+></Spinner>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/eRegMembership"
+
+
+                    android:layout_below="@+id/ebranch"
+
+
+                    android:background="@drawable/bg_textinput"
+                    android:hint="Branch"
+                    android:layout_marginTop="20dp"
+                    android:drawableLeft="@drawable/baseline_lock_white_18dp"
+                    ></Spinner>
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnRegLogin"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/background_signup"
+                    android:text="Register"
+
+                    android:layout_below="@+id/eRegMembership"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:textSize="22sp"
+                    android:layout_centerHorizontal="true"
+
+                    android:textColor="@color/bgco"
+                    android:padding="16dp"
+                    android:clickable="true"/>
+                <ProgressBar
+                    android:id="@+id/progress_login"
+                    android:layout_width="match_parent"
+                    android:visibility="invisible"
+                    android:layout_height="wrap_content"
+
+                   android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+
     </ScrollView>
 
-
-
-</LinearLayout>
+</RelativeLayout>

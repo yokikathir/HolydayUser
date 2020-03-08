@@ -46,12 +46,12 @@
     <string name="publish_date">date</string>
     <string name="in_news">news</string>
     <string name="address">Address</string>
-    <string name="price">Price Breakup</string>
-    <string name="security_money">Security Money</string>
-    <string name="monthly_money">Monthly Payment</string>
-    <string name="security_money_hint">* Your security money will be refunded after the completion of your booking tenure.
+    <string name="price">Price Detail</string>
+    <string name="security_money">Staff-Member Amount</string>
+    <string name="monthly_money">Staff-Non Member Amount</string>
+    <string name="security_money_hint">* Booking Approve or Reject Based on Admin.
     </string>
-    <string name="electricity_money">Electricity Charge</string>
+    <string name="electricity_money">Retired Staff</string>
     <string name="cities">Cities</string>
     <string name="note">Please Read</string>
     <string name="note_1">1. Guest can check in using any local or outstation ID Proof    (PAN card not accepted).</string>

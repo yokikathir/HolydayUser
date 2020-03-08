@@ -8,21 +8,38 @@ public class UserModel {
     private String password;
     private String empno;
     private String dob;
+    private String branch;
     private String staff;
     private String membership;
+
+    private String UID;
+
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
     private String phoneno;
     private String gmail;
     private String gender;
 
-    public UserModel(String username, String empno, String dob, String staff, String membership, String phoneno, String gmail, String gender) {
-        this.username = username;
-        this.empno = empno;
-        this.dob = dob;
-        this.staff = staff;
-        this.membership = membership;
-        this.phoneno = phoneno;
-        this.gmail = gmail;
-        this.gender=gender;
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getUsername() {

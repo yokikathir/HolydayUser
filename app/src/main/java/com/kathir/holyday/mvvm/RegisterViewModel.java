@@ -1,38 +1,56 @@
 package com.kathir.holyday.mvvm;
 
+import android.content.Context;
 import android.os.Handler;
 import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.kathir.core.AWSDataService;
+import com.kathir.holyday.utils.SharedPrefUtil;
+
 
 public class RegisterViewModel extends ViewModel {
+
+
 
     public MutableLiveData<String> regStatus = new MutableLiveData<String>();;
 
 
-    public void doLogin(String userName, String empno,String staff,String dob, String membership, String phone, String gmail,String gender) {
-        UserModel userModel = new UserModel(userName, empno,dob,staff,membership,phone,gmail,gender);
-        final int code = userModel.checkUserValidity(userName,empno);
+
+    public void doLogin(UserModel userModel, Context ctx) {
+
+
+
+
+        final int code = userModel.checkUserValidity(userModel.getUsername(),userModel.getEmpno());
         System.out.println("@Code "+code);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                String msg;
 
-                if(code==0) {
-                    msg="Login Successful";
-                }
-                else{
-                    msg="Login Fail";
-                }
-                System.out.println("@LOGIN: "+msg);
+        UserMtb request=new UserMtb();
+        request.setRegID(userModel.getUID());
+        if(userModel.getBranch()!=null)
+            request.setBranch(userModel.getBranch());
+        request.setDisplayName(userModel.getUsername());
+        request.setDob(userModel.getDob());
+        request.setmNo(userModel.getPhoneno());
+        request.setEmailID(userModel.getGmail());
+        request.setGender(userModel.getGender());
+        request.setEmpID(userModel.getEmpno());
+        request.setmDeviceID(Utility.getDeviceID(ctx));
+        request.setStaff(userModel.getStaff());
+        request.setMemberShip(userModel.getMembership());
+        request.setPushStatus("FALSE");
+        request.setStatus("P");
+        request.setCreatedDate(Utility.getCurrentTime());
+        request.setLastlogindate(Utility.getCurrentTime());
+        request.setIpaddres(Utility.getIPAddress(false));
+        AWSDataService awsDataService=new AWSDataService();
+        awsDataService.createContext(ctx,regStatus);
+        awsDataService.execute(request);
 
-                regStatus.postValue(msg);
-            }
-        }, 2000);
+
     }
 
 }

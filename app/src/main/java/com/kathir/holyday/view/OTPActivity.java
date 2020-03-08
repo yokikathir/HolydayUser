@@ -112,11 +112,7 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //verification successful we will start the profile activity
-                           /* Intent intent = new Intent(OTPActivity.this, HomeFragment.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);*/
-                            Toast.makeText(OTPActivity.this, "OTP received successfully", Toast.LENGTH_SHORT).show();
-
+                            startActivity(new Intent(OTPActivity.this, MpinSetupActivity.class));
                         } else {
 
                             //verification unsuccessful.. display an error message
@@ -161,6 +157,11 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onOtpCompleted(String otp) {
         // do Stuff
-        Toast.makeText(this, "OnOtpCompletionListener called", Toast.LENGTH_SHORT).show();
+        /*if (otp != null) {
+            otpView.setText(otp);
+            Log.e("messagecode",":"+otp);
+            //verifying the code
+            verifyVerificationCode(otp);
+        }*/
     }
 }

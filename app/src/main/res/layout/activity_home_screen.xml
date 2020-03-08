@@ -23,7 +23,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/bgco"
+                android:background="@color/bgcolor"
                 app:layout_scrollFlags="scroll|enterAlways">
 
                 <RelativeLayout

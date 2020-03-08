@@ -74,13 +74,11 @@ public class SharedPrefUtil {
         return Base64.encodeToString(randomBytes, Base64.NO_WRAP | Base64.NO_PADDING);
     }
 
-    public void setLoginDetails(String userID, String sessionToken, boolean loginStatus, String username, String email)
+    public void setLoginDetails(String username, String email)
     {
         writeString("EMAIL",email);
         writeString("USERNAME",username);
-        writeString("USERID",userID);
-        writeString("SESSSIONID",sessionToken);
-        writeBoolean("ISLOGIN",loginStatus);
+
     }
 
     public void setLogin(boolean is)
@@ -97,13 +95,13 @@ public class SharedPrefUtil {
         return readString("MNO");
 
     }
-    public void setCouponCode(String data)
+    public void setMPIN(String data)
     {
-        writeString("CPC",data);
+        writeString("MPIN",data);
     }
-    public String getCouponCode()
+    public String getMPIN()
     {
-        return readString("CPC");
+        return readString("MPIN");
 
     }
     public void clearCoupon()
@@ -117,6 +115,11 @@ public class SharedPrefUtil {
         clear("USERID");
         clear("SESSSIONID");
         clear("ISLOGIN");
+    }
+
+    public void setUserID(String data)
+    {
+        writeString("USERID",data);
     }
 
     public String getUserID()

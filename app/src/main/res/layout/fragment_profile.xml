@@ -74,13 +74,7 @@
                  android:text="@string/basic"
                  />
          </LinearLayout>
-         <com.facebook.shimmer.ShimmerFrameLayout
-             android:id="@+id/shimmer_view_container"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center"
-             android:orientation="vertical"
-             shimmer:duration="800">
+
          <androidx.cardview.widget.CardView
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
@@ -140,7 +134,7 @@
              </LinearLayout>
          </androidx.cardview.widget.CardView>
 
-         </com.facebook.shimmer.ShimmerFrameLayout>
+
          <RelativeLayout
              android:visibility="gone"
              android:id="@+id/no_detailsFoundsLayout"
@@ -182,13 +176,7 @@
                  android:text="@string/currentPg"
                  />
          </LinearLayout>
-         <com.facebook.shimmer.ShimmerFrameLayout
-             android:id="@+id/shimmer_view_container_fod"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center"
-             android:orientation="vertical"
-             shimmer:duration="800">
+
          <androidx.cardview.widget.CardView
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
@@ -261,7 +249,7 @@
                      />
              </LinearLayout>
          </androidx.cardview.widget.CardView>
-         </com.facebook.shimmer.ShimmerFrameLayout>
+
          <RelativeLayout
              android:visibility="gone"
              android:id="@+id/no_fodFoundsLayout"

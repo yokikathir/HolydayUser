@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import com.kathir.core.repository.ProductMTB;
 import com.kathir.holyday.home.ProductList;
 
 import java.util.ArrayList;
@@ -49,34 +50,19 @@ public class AppUtils {
     }
 
 
-    public static List<ProductList> getProductList()
+    public static List<ProductList> getProductList(List<ProductMTB> mProductList)
     {
         List<ProductList> noti=new ArrayList<>();
-        ProductList product1=new ProductList();
-        product1.setHouseName("PCBOA HOME1-Poonamallee");
-        product1.setPriceValue("RS 100");
-        product1.setImageUrl("https://i.ytimg.com/vi/PoFX3AfVPgo/maxresdefault.jpg");
-        noti.add(product1);
-        ProductList product2=new ProductList();
-        product2.setHouseName("PCBOA HOME2-Poonamallee");
-        product2.setPriceValue("RS 200");
-        product2.setImageUrl("https://i.pinimg.com/originals/a5/67/88/a56788472a77f38b12204034e4aeccde.jpg");
-        noti.add(product2);
-        ProductList product3=new ProductList();
-        product3.setHouseName("PCBOA HOME3-Poonamallee");
-        product3.setPriceValue("RS 500");
-        product3.setImageUrl("https://wallpapercave.com/wp/wp2464233.jpg");
-        noti.add(product3);
-        ProductList product4=new ProductList();
-        product4.setHouseName("PCBOA HOME1-Poonamallee");
-        product4.setPriceValue("RS 100");
-        product4.setImageUrl("https://i.ytimg.com/vi/PoFX3AfVPgo/maxresdefault.jpg");
-        noti.add(product4);
-        ProductList product5=new ProductList();
-        product5.setHouseName("PCBOA HOME1-Poonamallee");
-        product5.setPriceValue("RS 100");
-        product5.setImageUrl("https://wallpapercave.com/wp/wp2464233.jpg");
-        noti.add(product5);
+
+        for(int i=0;i<mProductList.size();i++) {
+            ProductList product1 = new ProductList();
+            product1.setHouseName(mProductList.get(i).getTittle());
+            product1.setPriceValue("₹ "+mProductList.get(i).getStaffMemberAmt());
+            product1.setImageUrl(mProductList.get(i).getImage1());
+            noti.add(product1);
+
+
+        }
 
         return noti;
     }

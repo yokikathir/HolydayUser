@@ -16,7 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import com.facebook.shimmer.ShimmerFrameLayout;
 import com.kathir.holyday.R;
 import com.kathir.holyday.view.LoginActivity;
 import com.shashank.sony.fancydialoglib.FancyAlertDialog;
@@ -41,7 +40,7 @@ public class Profilefragments extends Fragment {
     TextView fodName , fodAddress , fodContactPerson , fodContactMobile;
     RelativeLayout relativeLayout , noBooking;
     HashMap<String  , String> map= new HashMap<>();
-    private ShimmerFrameLayout mShimmerViewContainer ,shimmerFrameLayout;
+
     public Profilefragments() {
         // Required empty public constructor
     }
@@ -52,8 +51,7 @@ public class Profilefragments extends Fragment {
 
         // Inflate the activity_property_view for this fragment
         final View view= inflater.inflate(R.layout.fragment_profile, container, false);
-        mShimmerViewContainer =view.findViewById(R.id.shimmer_view_container);
-        shimmerFrameLayout=view.findViewById(R.id.shimmer_view_container_fod);
+
         logout=(Button)view.findViewById(R.id.logout_btn);
         userName="Mr."+map.get("name");
         userEmail=map.get("email");
@@ -92,7 +90,7 @@ public class Profilefragments extends Fragment {
             mobileView.setText("+91-"+userMobile);
             nameView.setText(userName);
             emailView.setText(userEmail);
-            mShimmerViewContainer.startShimmerAnimation();
+            //mShimmerViewContainer.startShimmerAnimation();
         }catch (Exception e){
             e.printStackTrace();
         }

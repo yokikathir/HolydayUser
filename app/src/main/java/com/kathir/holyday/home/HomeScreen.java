@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.load.engine.Resource;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kathir.core.repository.HomeViewPresenter;
 import com.kathir.holyday.R;
 
 
@@ -68,8 +69,9 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         LayoutInflater factory = LayoutInflater.from(HomeScreen.this);
         View view = factory.inflate(R.layout.alertdialog_image, null);
         alertadd.setView(view);
-        alertadd.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+        alertadd.setNeutralButton("OK Continue", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dlg, int sumthin) {
+
 
             }
         });

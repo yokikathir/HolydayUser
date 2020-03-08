@@ -22,7 +22,10 @@ public class SplashScreen extends AppCompatActivity implements SplashMVPView.Vie
     @Override
     public void navigationActivityBasedSession(boolean loginStatus) {
 
+        if(loginStatus)
         NavigationUtils.navigateToLogin(this);
+        else
+            NavigationUtils.navigateMain(this);
 
     }
 }

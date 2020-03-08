@@ -28,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kathir.holyday.R;
+import com.kathir.holyday.utils.SharedPrefUtil;
 import com.kathir.holyday.view.LoginActivity;
 import com.kathir.holyday.view.MainActivity;
 import com.kathir.holyday.view.MpinSetupActivity;
@@ -41,41 +42,77 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class RegisterActivity extends AppCompatActivity {
     RegisterViewModel regidterViewModel;
     List<String> categories = new ArrayList<String>();
     List<String>stafflist=new ArrayList<>();
-    private Button registerBtn, gotoLoginBtn;
+    List<String> genderList = new ArrayList<String>();
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
-    private EditText regName, regGmail, regPhoneno, regGender, regDob, regEmpid;
-    private Spinner regmebership,regSatff;
-    private ProgressBar progressBar;
+    UserModel userModel;
+  SharedPrefUtil sharedPrefUtil;
+
+
+
+
+
+    @BindView(R.id.eRegstaff)
+    Spinner regSatff;
+
+    @BindView(R.id.eRegMembership)
+    Spinner regmebership;
+
+
+    @BindView(R.id.btnRegLogin)
+    Button registerBtn;
+
+    @BindView(R.id.progress_login)
+    ProgressBar progressBar;
+    @BindView(R.id.etRegName)
+     EditText regName;
+    @BindView(R.id.etRegGmail)
+     EditText regGmail;
+    @BindView(R.id.etRegPhone)
+     EditText regPhoneno;
+    @BindView(R.id.eRegDob)
+     EditText regDob;
+    @BindView(R.id.eRegEmpNo)
+     EditText regEmpid;
+
+  @BindView(R.id.gender)
+  Spinner gender;
+
     Calendar myCalendar = Calendar.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeration);
 
-        initUI();
+        ButterKnife.bind(this);
+
+        sharedPrefUtil.init(this);
         calendar();
-        stafflist.add("Select Staff");
         stafflist.add("Staff");
         stafflist.add("Ex Staff");
 
         ArrayAdapter<String>staffadapter=new ArrayAdapter<String>(RegisterActivity.this,R.layout.spinner_item,R.id.textview,stafflist);
         regSatff.setAdapter(staffadapter);
 
+        genderList.add("Male");
+        genderList.add("Female");
 
-        categories.add("Select Category");
         categories.add("Membership");
         categories.add("Non Membership");
-        categories.add("Retired");
+
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(RegisterActivity.this, R.layout.spinner_item, R.id.textview, categories);
         regmebership.setAdapter(arrayAdapter);
 
-
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<String>(RegisterActivity.this, R.layout.spinner_item, R.id.textview, genderList);
+        gender.setAdapter(genderAdapter);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,45 +151,38 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-        gotoLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                finish();
-            }
-        });
+
     }
 
     private void regResult() {
+
         String fname = regName.getText().toString().trim();
         String fPhone = regPhoneno.getText().toString().trim();
         String fGmail = regGmail.getText().toString().trim();
         String fEmpno = regEmpid.getText().toString().trim();
         String fDob = regDob.getText().toString().trim();
         String fstaff = regSatff.getSelectedItem().toString().trim();
-        String fGender = regGender.getText().toString().trim();
+        String fGender =gender.getSelectedItem().toString();
         String fMembership = regmebership.getSelectedItem().toString().trim();
+        userModel=new UserModel();
+        userModel.setUsername(fname);
+        userModel.setDob(fDob);
+        userModel.setEmpno(fEmpno);
+        userModel.setGmail(fGmail);
+        userModel.setPhoneno(fPhone);
+        userModel.setGender(fGender);
+        userModel.setMembership(fMembership);
+        userModel.setStaff(fstaff);
+        String uID="UID"+fEmpno+Utility.getCurrentTime();
+        userModel.setUID(uID);
+        sharedPrefUtil.getInstance().setLoginDetails(userModel.getUsername(),userModel.getGmail());
 
-        regidterViewModel.doLogin(fname, fEmpno, fDob, fstaff, fMembership, fPhone, fGmail, fGender);
-
-    }
-
-    private void initUI() {
-        regName = findViewById(R.id.etRegName);
-        regEmpid = findViewById(R.id.eRegEmpNo);
-        regDob = findViewById(R.id.eRegDob);
-        regmebership = findViewById(R.id.eRegMembership);
-        regGmail = findViewById(R.id.etRegGmail);
-        regPhoneno = findViewById(R.id.etRegPhone);
-        regSatff = findViewById(R.id.eRegstaff);
-        regGender = findViewById(R.id.ereggender);
-        progressBar = findViewById(R.id.progress_login);
-        registerBtn = findViewById(R.id.btnRegLogin);
-        gotoLoginBtn = findViewById(R.id.btnGotoLogin);
-        progressBar.setVisibility(View.INVISIBLE);
-
+        sharedPrefUtil.getInstance().setUserID(uID);
+        regidterViewModel.doLogin(userModel,this);
 
     }
+
+
 
     private void showError() {
         if (regName.getText().toString().trim().length() == 0) {
@@ -164,10 +194,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (regDob.getText().toString().trim().length() == 0) {
             regDob.setError("DOB is not entered");
             regDob.requestFocus();
-        } else if (regGender.getText().toString().trim().length() == 0) {
-            regGender.setError("Gender is not entered");
-            regGender.requestFocus();
-        } else if (regSatff.getSelectedItemPosition() == 0) {
+        }  else if (regSatff.getSelectedItemPosition() == 0) {
             Toast.makeText(RegisterActivity.this, "Please Select Staff/Ex Staff", Toast.LENGTH_SHORT).show();
         } else if (regmebership.getSelectedItemPosition() == 0) {
             Toast.makeText(RegisterActivity.this, "Please Select the Membership", Toast.LENGTH_SHORT).show();
@@ -186,8 +213,6 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (regEmpid.getText().toString().trim().length() == 0) {
             return true;
         } else if (regDob.getText().toString().trim().length() == 0) {
-            return true;
-        } else if (regGender.getText().toString().trim().length() == 0) {
             return true;
         } else if (regSatff.getSelectedItemPosition() == 0) {
             return true;

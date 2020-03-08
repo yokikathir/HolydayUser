@@ -13,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import com.kathir.holyday.R;
 import com.kathir.holyday.model.InclusionProperty;
+import com.kathir.holyday.utils.GlideUtil;
 
 import java.util.List;
 
@@ -45,7 +46,8 @@ public class InclusionAdapter extends  RecyclerView.Adapter<InclusionAdapter.MyV
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder,final int i) {
        myViewHolder.textView.setText(minclusion.get(i).getText());
        //myViewHolder.textView.s
-        Glide.with(mContext).load(minclusion.get(i).getImage()).apply(options).into(myViewHolder.imageView);
+      //  Glide.with(mContext).load(minclusion.get(i).getImage()).apply(options).into(myViewHolder.imageView);
+        GlideUtil.getInstance().loadImage(mContext,myViewHolder.imageView,minclusion.get(i).getImage(), R.drawable.placeholder);
     }
 
     @Override
