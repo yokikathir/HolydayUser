@@ -14,23 +14,20 @@ import com.kathir.holyday.utils.SharedPrefUtil;
 public class RegisterViewModel extends ViewModel {
 
 
-
-    public MutableLiveData<String> regStatus = new MutableLiveData<String>();;
+    public MutableLiveData<String> regStatus = new MutableLiveData<String>();
 
 
 
     public void doLogin(UserModel userModel, Context ctx) {
 
 
+        final int code = userModel.checkUserValidity(userModel.getUsername(), userModel.getEmpno());
+        System.out.println("@Code " + code);
 
 
-        final int code = userModel.checkUserValidity(userModel.getUsername(),userModel.getEmpno());
-        System.out.println("@Code "+code);
-
-
-        UserMtb request=new UserMtb();
+        UserMtb request = new UserMtb();
         request.setRegID(userModel.getUID());
-        if(userModel.getBranch()!=null)
+        if (userModel.getBranch() != null)
             request.setBranch(userModel.getBranch());
         request.setDisplayName(userModel.getUsername());
         request.setDob(userModel.getDob());
@@ -46,8 +43,8 @@ public class RegisterViewModel extends ViewModel {
         request.setCreatedDate(Utility.getCurrentTime());
         request.setLastlogindate(Utility.getCurrentTime());
         request.setIpaddres(Utility.getIPAddress(false));
-        AWSDataService awsDataService=new AWSDataService();
-        awsDataService.createContext(ctx,regStatus);
+        AWSDataService awsDataService = new AWSDataService();
+        awsDataService.createContext(ctx, regStatus);
         awsDataService.execute(request);
 
 

@@ -26,11 +26,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.kathir.holyday.R;
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.text.ParseException;
@@ -38,12 +36,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import ru.slybeaver.slycalendarview.SlyCalendarDialog;
 
 
@@ -51,7 +49,7 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
     // View customView ;
     static final int CAMERA_REQUEST = 1888, CAMERA_REQUEST_back = 1999;
     static final int MY_CAMERA_PERMISION = 1, MY_CAMERA_PERMISSION_2 = 2;
-    ImageButton frontFace, backFace;
+    ImageButton frontFace, backFace,increamentbtn,decreamentbtn;
     AlertDialog alertDialog, alertDialog1;
     LayoutInflater inflater, inflater_back;
     Double priceDouble;
@@ -62,12 +60,13 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
     String documentsType = null;
     String CoverImage, adress, fulladdress, uid, price;
     String UserName, UserEmail, FirstDate = "", SecondDate = "", BookingType = "";
-    TextView BookingFor, monthlyMoney, securityMoney, userNameTextView, userEmailTextView;
+    TextView BookingFor, monthlyMoney, securityMoney, userNameTextView, userEmailTextView,countbtn;
     EditText dateFrom, dateTo;
     ProgressDialog progressDialog;
     HashMap<String, String> map = new HashMap<>();
     HashMap<String, String> user = new HashMap<>();
     private RadioButton adhaar, passport;
+    private int mCount=3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +75,9 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
         setContentView(R.layout.activity_upload_documents);
         frontFace = (ImageButton) findViewById(R.id.front_face);
         backFace = (ImageButton) findViewById(R.id.back_face);
+        decreamentbtn = (ImageButton) findViewById(R.id.decbtn);
+        increamentbtn = (ImageButton) findViewById(R.id.incbtn);
+        countbtn = (TextView) findViewById(R.id.countadult);
         checkout = (Button) findViewById(R.id.checkout);
         inflater = LayoutInflater.from(this);
         inflater_back = LayoutInflater.from(this);
@@ -89,6 +91,7 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
         userNameTextView = (TextView) findViewById(R.id.booking_person_name);
         userEmailTextView = (TextView) findViewById(R.id.booking_person_email);
         dateFrom = (EditText) findViewById(R.id.date_from);
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
 
@@ -233,6 +236,34 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
                 }
             }
         });
+        decreamentbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mCount>1) {
+                    decrement();
+                }else {
+                    Toast.makeText(getApplicationContext(), "Not allowed", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        increamentbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mCount<=4) {
+                    increment();
+                }else {
+                    Toast.makeText(getApplicationContext(), "Not allowed", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+
+        if (savedInstanceState != null) {
+            mCount = savedInstanceState.getInt("count");
+            countbtn.setText(String.valueOf(mCount));
+        }
+
     }
 
     private void genaretedate() throws ParseException {
@@ -304,6 +335,16 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
 //
     }
 
+
+    private void decrement() {
+        mCount--;
+        countbtn.setText(String.valueOf(mCount+" Guest"));
+    }
+
+    private void increment() {
+        mCount++;
+        countbtn.setText(String.valueOf(mCount+" Guest"));
+    }
     @Override
     public void onDataSelected(Calendar firstDate, Calendar secondDate, int hours, int minutes) {
         if (firstDate != null) {

@@ -48,44 +48,34 @@ import butterknife.ButterKnife;
 public class RegisterActivity extends AppCompatActivity {
     RegisterViewModel regidterViewModel;
     List<String> categories = new ArrayList<String>();
-    List<String>stafflist=new ArrayList<>();
+    List<String> stafflist = new ArrayList<>();
     List<String> genderList = new ArrayList<String>();
-    private SQLiteOpenHelper openHelper;
-    private SQLiteDatabase db;
     UserModel userModel;
-  SharedPrefUtil sharedPrefUtil;
-
-
-
-
-
+    SharedPrefUtil sharedPrefUtil;
     @BindView(R.id.eRegstaff)
     Spinner regSatff;
-
     @BindView(R.id.eRegMembership)
     Spinner regmebership;
-
-
     @BindView(R.id.btnRegLogin)
     Button registerBtn;
-
     @BindView(R.id.progress_login)
     ProgressBar progressBar;
     @BindView(R.id.etRegName)
-     EditText regName;
+    EditText regName;
     @BindView(R.id.etRegGmail)
-     EditText regGmail;
+    EditText regGmail;
     @BindView(R.id.etRegPhone)
-     EditText regPhoneno;
+    EditText regPhoneno;
     @BindView(R.id.eRegDob)
-     EditText regDob;
+    EditText regDob;
     @BindView(R.id.eRegEmpNo)
-     EditText regEmpid;
-
-  @BindView(R.id.gender)
-  Spinner gender;
-
+    EditText regEmpid;
+    @BindView(R.id.gender)
+    Spinner gender;
     Calendar myCalendar = Calendar.getInstance();
+    private SQLiteOpenHelper openHelper;
+    private SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
         stafflist.add("Staff");
         stafflist.add("Ex Staff");
 
-        ArrayAdapter<String>staffadapter=new ArrayAdapter<String>(RegisterActivity.this,R.layout.spinner_item,R.id.textview,stafflist);
+        ArrayAdapter<String> staffadapter = new ArrayAdapter<String>(RegisterActivity.this, R.layout.spinner_item, R.id.textview, stafflist);
         regSatff.setAdapter(staffadapter);
 
         genderList.add("Male");
@@ -132,13 +122,13 @@ public class RegisterActivity extends AppCompatActivity {
         regidterViewModel.regStatus.observe(RegisterActivity.this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                if (s.equals("Login Fail")){
+                if (s.equals("Login Fail")) {
                     Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.INVISIBLE);
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.INVISIBLE);
-                  //  startActivity(new Intent(RegisterActivity.this, OTPActivity.class));
+                    //  startActivity(new Intent(RegisterActivity.this, OTPActivity.class));
                     String fPhone = regPhoneno.getText().toString().trim();
 
                     Intent intent = new Intent(RegisterActivity.this, OTPActivity.class);
@@ -151,7 +141,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     private void regResult() {
@@ -162,9 +151,9 @@ public class RegisterActivity extends AppCompatActivity {
         String fEmpno = regEmpid.getText().toString().trim();
         String fDob = regDob.getText().toString().trim();
         String fstaff = regSatff.getSelectedItem().toString().trim();
-        String fGender =gender.getSelectedItem().toString();
+        String fGender = gender.getSelectedItem().toString();
         String fMembership = regmebership.getSelectedItem().toString().trim();
-        userModel=new UserModel();
+        userModel = new UserModel();
         userModel.setUsername(fname);
         userModel.setDob(fDob);
         userModel.setEmpno(fEmpno);
@@ -173,15 +162,14 @@ public class RegisterActivity extends AppCompatActivity {
         userModel.setGender(fGender);
         userModel.setMembership(fMembership);
         userModel.setStaff(fstaff);
-        String uID="UID"+fEmpno+Utility.getCurrentTime();
+        String uID = "UID" + fEmpno + Utility.getCurrentTime();
         userModel.setUID(uID);
-        sharedPrefUtil.getInstance().setLoginDetails(userModel.getUsername(),userModel.getGmail());
+        sharedPrefUtil.getInstance().setLoginDetails(userModel.getUsername(), userModel.getGmail());
 
         sharedPrefUtil.getInstance().setUserID(uID);
-        regidterViewModel.doLogin(userModel,this);
+        regidterViewModel.doLogin(userModel, this);
 
     }
-
 
 
     private void showError() {
@@ -194,7 +182,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (regDob.getText().toString().trim().length() == 0) {
             regDob.setError("DOB is not entered");
             regDob.requestFocus();
-        }  else if (regSatff.getSelectedItemPosition() == 0) {
+        } else if (regSatff.getSelectedItemPosition() == 0) {
             Toast.makeText(RegisterActivity.this, "Please Select Staff/Ex Staff", Toast.LENGTH_SHORT).show();
         } else if (regmebership.getSelectedItemPosition() == 0) {
             Toast.makeText(RegisterActivity.this, "Please Select the Membership", Toast.LENGTH_SHORT).show();
@@ -271,6 +259,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
+
     private void updateLabel() {
 
         String myFormat = "yyyy-MM-dd"; //In which you need put here
@@ -278,6 +267,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         regDob.setText(sdf.format(myCalendar.getTime()));
     }
+
     private void hideKeyboard(Context context, View view) {
         view = RegisterActivity.this.getCurrentFocus();
         if (view != null) {

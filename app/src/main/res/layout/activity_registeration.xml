@@ -46,7 +46,7 @@
                     android:hint="Display Name"
                     android:textColor="@color/darkgrey"
                     android:textColorHint="@color/darkgrey"
-                    android:fontFamily="@font/helveticareqular"
+
                     android:padding="10dp"
                     android:background="@drawable/bg_textinput"
                     android:inputType="text"

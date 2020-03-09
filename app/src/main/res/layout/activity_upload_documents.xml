@@ -236,25 +236,36 @@
                         android:weightSum="3"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <EditText
-                        android:layout_weight="1"
-                        android:layout_width="0sp"
-                        android:layout_height="match_parent"
-                        android:inputType="number"
-                        android:hint="Adults"/>
-                    <EditText
-                        android:layout_weight="1"
-                        android:layout_width="0sp"
-                        android:layout_height="match_parent"
-                        android:inputType="number"
-                        android:hint="Children"/>
-                        <EditText
-                            android:layout_weight="1"
-                            android:layout_width="0sp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                       >
+                    <ImageButton
+                        android:id="@+id/decbtn"
+                        android:background="@color/white"
+                        android:padding="@dimen/parent_layout_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_launcher_minus_btn"
+                       />
+
+                        <TextView
+                            android:id="@+id/countadult"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:inputType="number"
-                            android:hint="Rooms"/>
+                            android:layout_marginStart="60dp"
+                            android:gravity="center"
+                            android:hint="3 Guest"
+                            android:textSize="20sp" />
+
+                        <ImageButton
+                            android:id="@+id/incbtn"
+                            android:background="@color/white"
+                            android:padding="@dimen/parent_layout_padding"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="60dp"
+                            android:src="@drawable/ic_launcher_plus_btn"
+                           />
 
                 </LinearLayout>
                 </LinearLayout>
