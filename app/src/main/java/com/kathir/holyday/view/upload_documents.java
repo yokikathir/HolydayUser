@@ -1,34 +1,34 @@
 package com.kathir.holyday.view;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.kathir.holyday.R;
-
+import com.kathir.holyday.home.HomeMVPView;
 
 import java.io.ByteArrayOutputStream;
 import java.text.ParseException;
@@ -36,15 +36,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import ru.slybeaver.slycalendarview.SlyCalendarDialog;
-
-
 public class upload_documents extends AppCompatActivity implements SlyCalendarDialog.Callback {
     // View customView ;
     static final int CAMERA_REQUEST = 1888, CAMERA_REQUEST_back = 1999;
@@ -61,17 +58,17 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
     String CoverImage, adress, fulladdress, uid, price;
     String UserName, UserEmail, FirstDate = "", SecondDate = "", BookingType = "";
     TextView BookingFor, monthlyMoney, securityMoney, userNameTextView, userEmailTextView,countbtn;
-    EditText dateFrom, dateTo;
+    EditText dateFrom, dateTo,mEditText;
     ProgressDialog progressDialog;
     HashMap<String, String> map = new HashMap<>();
     HashMap<String, String> user = new HashMap<>();
     private RadioButton adhaar, passport;
     private int mCount=3;
-
+    int numberOfLines=1;
+    private LinearLayout childlinearlayout,parentlenalayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_upload_documents);
         frontFace = (ImageButton) findViewById(R.id.front_face);
         backFace = (ImageButton) findViewById(R.id.back_face);
@@ -91,10 +88,10 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
         userNameTextView = (TextView) findViewById(R.id.booking_person_name);
         userEmailTextView = (TextView) findViewById(R.id.booking_person_email);
         dateFrom = (EditText) findViewById(R.id.date_from);
-
+        childlinearlayout = (LinearLayout) findViewById(R.id.linearLayoutDecisions);
+        parentlenalayout = (LinearLayout) findViewById(R.id.parentlinearlayout);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
-
         final View customView = inflater.inflate(R.layout.custom_dialog, null, false);
         final View CustomViewBAck = inflater_back.inflate(R.layout.custom_dialog, null, false);
         alertDialog = new AlertDialog.Builder(upload_documents.this).create();
@@ -107,9 +104,6 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
         alertDialog1.setCanceledOnTouchOutside(false);
         alertDialog1.setView(CustomViewBAck);
         //sql lite data from database
-
-
-
         Toast.makeText(getApplicationContext(), "" + user, Toast
                 .LENGTH_SHORT).show();
         try {
@@ -118,10 +112,8 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
             monthlyMoney.setText("Rs. " + "200");
             userNameTextView.setText("User name");
             userEmailTextView.setText("User Email");
-
             priceDouble = 0.0;
             priceDouble = Double.valueOf(Integer.parseInt(price));
-
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -142,8 +134,6 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
         dateFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,7 +188,6 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
                 }
             }
         });
-
         frontFace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,7 +196,6 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         });
         backFace.setOnClickListener(new View.OnClickListener() {
@@ -241,31 +229,40 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
             public void onClick(View v) {
                 if (mCount>1) {
                     decrement();
+                    if (parentlenalayout.getChildCount()!=1)
+                    parentlenalayout.removeViewAt(parentlenalayout.getChildCount()-1);
                 }else {
                     Toast.makeText(getApplicationContext(), "Not allowed", Toast.LENGTH_LONG).show();
                 }
             }
         });
-
+        addnameage();
+        addnameage();
         increamentbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mCount<=4) {
                     increment();
+                    addnameage();
+
                 }else {
                     Toast.makeText(getApplicationContext(), "Not allowed", Toast.LENGTH_LONG).show();
-
                 }
             }
         });
-
         if (savedInstanceState != null) {
             mCount = savedInstanceState.getInt("count");
             countbtn.setText(String.valueOf(mCount));
         }
-
     }
+    private void addnameage(){
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View rowView = inflater.inflate(R.layout.activity_upload_documents, null);
+        LinearLayout linearLayout=  rowView.findViewById(R.id.linearLayoutDecisions);
+        ((ViewGroup)linearLayout.getParent()).removeView(linearLayout); // <- fix
 
+        parentlenalayout.addView(linearLayout, parentlenalayout.getChildCount() - 1);
+    }
     private void genaretedate() throws ParseException {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
@@ -283,8 +280,6 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
                 .setCallback(upload_documents.this)
                 .show(getSupportFragmentManager(), "TAG_SLYCALENDAR");
     }
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -300,47 +295,36 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
             // startActivityForResult();
         }
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             //photo=(Bitmap)data.getData().get
             frontFace.setImageBitmap(photo);
             frontFace.setEnabled(false);
-
         } else if (requestCode == CAMERA_REQUEST_back && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             backFace.setImageBitmap(photo);
             backFace.setEnabled(false);
         }
-
     }
-
-
     public String getStringImage(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(bmp, 400, 580, false);
         resizedBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;
     }
-
     @Override
     public void onCancelled() {
 //
     }
-
-
     private void decrement() {
         mCount--;
         countbtn.setText(String.valueOf(mCount+" Guest"));
     }
-
     private void increment() {
         mCount++;
         countbtn.setText(String.valueOf(mCount+" Guest"));
@@ -362,7 +346,6 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
                                     new SimpleDateFormat(getString(R.string.timeFormat), Locale.getDefault()).format(secondDate.getTime())
                             ),
                             Toast.LENGTH_LONG
-
                     ).show();*/
                 String date = null;
                 Calendar cal = Calendar.getInstance();
@@ -372,10 +355,7 @@ public class upload_documents extends AppCompatActivity implements SlyCalendarDi
                 dateFrom.setText(str1 + " to " + date);
                 FirstDate = str1;
                 SecondDate = date;
-
             }
         }
     }
-
-
 }

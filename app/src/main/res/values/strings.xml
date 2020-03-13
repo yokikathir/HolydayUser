@@ -88,4 +88,8 @@
     <string name="letsgetStarted">Let\'s get you started</string>
     <string name="Offer">OFFER NAME</string>
     <string name="couponCodeDetails">Coupon Code Details goes here like Book now and get 30 % Off</string>
+    <string-array name="types">
+        <item>Adult</item>
+        <item>Child</item>
+    </string-array>
 </resources>
